@@ -1,5 +1,4 @@
 package org.emp.AWS.payrollSystem;
-
 import com.google.gson.Gson;
 
 public class Employee {
@@ -8,12 +7,6 @@ public class Employee {
     private char workType;
     private double wage, wageAfterTax;
 
-    public Employee(String employeeName, int employeeId, char workType, double wage){
-        this.employeeName = employeeName;
-        this.employeeId = employeeId;
-        this.workType = workType;
-        this.wage = wage;
-    }
     public Employee(String json){
         Gson gson = new Gson();
         Employee tempEmployee = gson.fromJson(json, Employee.class);
@@ -21,23 +14,12 @@ public class Employee {
         this.employeeId = tempEmployee.employeeId;
         this.workType = tempEmployee.workType;
         this.wage = tempEmployee.wage;
+        calculateWageAfterTax();
     }
 
-    //Setter methods are for manipulation of the values if needed;
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public void setWorkType(char workType) {
-        this.workType = workType;
-    }
-
-    public void setWage(double wage) {
-        this.wage = wage;
+    //for returning employee details into string
+    public String toString (){
+        return new Gson().toJson(this);
     }
 
     //Getters for accessing the employee details
@@ -58,7 +40,34 @@ public class Employee {
     }
 
     public double getWageAfterTax() {
-        wageAfterTax = payrollSystem.Payroll.calculateWageAfterTax(wage, workType);
         return wageAfterTax;
     }
+
+    //Calculating wage according to worktype
+    public void calculateWageAfterTax() {
+        int tax;
+
+        //For the Temporary employees tac is 15%
+        if (workType == 'T'){
+
+            //tax is in %
+            tax = 15;
+        }
+        //For the Contract employees tac is 15%
+        else if(workType == 'C'){
+
+            //tax is in %
+            tax = 18;
+        }
+        //For the FullTime employees tac is 15%
+        else{
+
+            //tax is in %
+            tax = 30;
+        }
+
+        wageAfterTax = wage - ((wage * tax)/100);
+    }
+
+    
 }

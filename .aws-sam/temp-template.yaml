@@ -1,0 +1,11 @@
+Resources:
+  Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      Timeout: 1
+      MemorySize: 512
+      Handler: org.emp.AWS.EmployeeHandler::getFilteredEmployees
+      CodeUri: /Users/MohitKumarSoni/Documents/Personal/Projects /EmployeesAWS/EmployeesAWS
+      Runtime: java11
+      Architectures:
+        - arm64
