@@ -2,9 +2,9 @@ Resources:
   Function:
     Type: AWS::Serverless::Function
     Properties:
-      Timeout: 1
+      Timeout: 20
       MemorySize: 512
-      Handler: org.emp.AWS.EmployeeHandler::getFilteredEmployees
+      Handler: org.emp.AWS.EmployeeHandler::handlePutRequest
       CodeUri: Function
       Runtime: java11
       Architectures:

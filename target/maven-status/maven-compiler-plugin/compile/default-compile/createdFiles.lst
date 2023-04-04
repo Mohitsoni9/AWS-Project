@@ -1,2 +1,8 @@
 org/emp/AWS/payrollSystem/Employee.class
+org/emp/AWS/payrollSystem/Validation.class
+org/emp/AWS/payrollSystem/InvalidEmployeeDetails.class
+org/emp/AWS/payrollSystem/InvalidNameException.class
 org/emp/AWS/EmployeeHandler.class
+org/emp/AWS/payrollSystem/InvalidWorkType.class
+org/emp/AWS/payrollSystem/InvalidWageException.class
+org/emp/AWS/payrollSystem/InvalidIdException.class
