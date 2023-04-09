@@ -14,8 +14,8 @@ public class Validation {
      * Employee name must have at least one space and cannot be less than 5 characters
      */
     public static void  checkName(String empName) throws InvalidNameException {
-
-        if ((!empName.contains(" ")) && (!empName.matches("[a-zA-Z0-9\\s]6+"))){
+            // "[a-zA-Z\\s]6+"
+        if ((!empName.contains(" ")) && (!empName.matches("[\\w^_\\s]6+"))){
             throw new InvalidNameException("Employee name must have at least one space and cannot be less than 5 characters");
         }
     }
@@ -25,7 +25,7 @@ public class Validation {
      */
     public static String checkEmployeeId(String empId) throws InvalidIdException {
 
-        if (!empId.matches("[0-9]+")){
+        if (!empId.matches("\\d+")){
             throw new InvalidIdException("Employee ID must be a positive integer ");
         }
         return empId;

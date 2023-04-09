@@ -4,7 +4,7 @@ Resources:
     Properties:
       Timeout: 20
       MemorySize: 512
-      Handler: org.emp.AWS.EmployeeHandler::handlePutRequest
+      Handler: org.emp.AWS.EmployeeHandler::handleDeleteRequest
       CodeUri: Function
       Runtime: java11
       Architectures:

@@ -278,6 +278,7 @@ public class EmployeeHandler implements RequestStreamHandler {
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder.defaultClient();
         DynamoDB dynamoDB = new DynamoDB(client);
         int employeeId;
+        Item resItem = null;
 
         try {
 
@@ -290,6 +291,16 @@ public class EmployeeHandler implements RequestStreamHandler {
                     employeeId = Integer.parseInt(
                             Validation.checkEmployeeId(
                                     pps.get("employeeId").toString()));
+
+                    /**
+                     * if employee is not found in the database
+                     */
+                    resItem = dynamoDB.getTable(DYNAMO_TABLE).getItem("employeeId", employeeId);
+                    if (resItem == null){
+                        throw new Exception("Employee is not registered");
+                    }
+
+
                     dynamoDB.getTable(DYNAMO_TABLE).deleteItem("employeeId",employeeId);
                 }
             }
