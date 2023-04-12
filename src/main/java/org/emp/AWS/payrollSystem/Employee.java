@@ -68,6 +68,8 @@ public class Employee {
 
         wageAfterTax = wage - ((wage * tax)/100);
 //        (w * (100 - t) / 100);
+
+
     }
 
     
